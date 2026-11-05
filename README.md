@@ -14,18 +14,9 @@ SPPC addresses this fault-location confusion **after** a diagnostic model has ma
 
 ## Framework
 
-*SPPC framework figure — to be added.*
-![SPPC framework](assets/sppc_framework.png)
-
-<!--
-To insert the final framework figure:
-1. Upload the image to assets/sppc_framework.png
-2. Replace the italic placeholder above with:
 
 ![SPPC framework](assets/sppc_framework.png)
 
-No other README changes are needed.
--->
 
 ## Method
 
@@ -44,7 +35,7 @@ We evaluate SPPC in two distinct settings:
 | Evaluation | Datasets / model | Main result |
 | --- | --- | --- |
 | **Method development and analysis** | CWRU, UOTTAWA, MFPT, and DZLRSB; six frozen diagnostic backbones | Mean accuracy across the four development domains and six backbones: **65.39% → 92.82%** |
-| **Independent external validation** | Paderborn; frozen CDDG backbone with SPPC rules fixed | Class-balanced, bearing-equal window accuracy: **40.13% → 42.87%** (**+2.74 percentage points**) |
+| **Independent external validation** | Paderborn; frozen CDDG backbone with SPPC rules fixed | Class-balanced, bearing-equal window accuracy: **40.13% → 42.87%**  |
 
 The development datasets were used to establish and analyze the method. **Paderborn was reserved for validation after the SPPC rules and parameters were fixed.** The difference in improvement between these settings is an important part of the reported evaluation.
 
