@@ -1,28 +1,29 @@
-# SPPC-Bearing-Fault-Diagnosis
+# SPPC
 
-# SPPC: Selective Physics-Based Prediction Correction for Cross-Machine Bearing Fault Diagnosis
+**Selective Physics-Based Prediction Correction for Cross-Machine Bearing Fault Diagnosis**
 
-**A physics-informed, post-hoc prediction correction method for inner-race and outer-race bearing faults.**
+*A training-free, post-hoc approach to correcting inner-race/outer-race fault confusion using bearing-specific physical evidence.*
 
-> **Repository status:** This repository currently provides a project overview only. The source code, experiment configurations, and reproduction scripts have **not yet been released**. We plan to add them after the implementation and release materials have been verified.
+> **Release status:** This repository currently contains the project overview only. The source code, configurations, and reproduction instructions have not yet been released.
 
 ## Overview
 
-Diagnostic models deployed on previously unseen machines may recognize a bearing fault while confusing its location, particularly between inner-race and outer-race faults. These two fault locations have different bearing characteristic orders, which provide a mechanical reference for revisiting a model's prediction.
+Deep learning models for bearing fault diagnosis can struggle when deployed on machines that differ from those seen during training. A particularly important error occurs when a model correctly identifies a faulty bearing but confuses an **inner-race fault (Inner)** with an **outer-race fault (Outer)**.
 
-**Selective Physics-Based Prediction Correction (SPPC)** is a post-hoc framework that uses bearing-specific physical evidence to selectively revise predictions from an already trained and frozen diagnostic model. It does not retrain or modify the backbone. SPPC preserves the backbone's normal/fault decision and considers only **Inner ↔ Outer** corrections.
+SPPC addresses this fault-location confusion **after** a diagnostic model has made its prediction. Rather than retraining the model or replacing its three-class decision, SPPC uses an independent signal-processing branch to determine whether the predicted fault location should be revised. The original prediction is retained whenever the required physical information is unavailable or the physical decisions are inconsistent.
 
 ## Framework
 
-> **Framework figure:** To be added.
+*SPPC framework figure — to be added.*
 
 <!--
-To add the final SPPC framework figure:
-1. Upload the image to assets/sppc_framework.png.
-2. Delete the placeholder quotation above.
-3. Uncomment the Markdown image line below (remove the leading and trailing HTML comment markers).
+To insert the final framework figure:
+1. Upload the image to assets/sppc_framework.png
+2. Replace the italic placeholder above with:
 
-![SPPC framework](assets/sppc_framework.png)
+![Overview of the SPPC framework](assets/sppc_framework.png)
+
+No other README changes are needed.
 -->
 
 ## Method
@@ -35,29 +36,35 @@ SPPC combines three elements:
 
 The physical-information eligibility conditions rely on available, validated machine information; they do not constitute an online detector of incorrect bearing metadata or speed measurements.
 
-## Evaluation
+## Experimental evaluation
 
-The method is studied using six frozen diagnostic backbones and two distinct evaluation settings:
+We evaluate SPPC in two distinct settings:
 
-| Setting | Datasets | Purpose |
+| Evaluation | Datasets / model | Main result |
 | --- | --- | --- |
-| Method development and analysis | CWRU, UOTTAWA, MFPT, DZLRSB | Examine prediction correction, physical evidence, and sensitivity to metadata errors |
-| Independent external validation | Paderborn | Evaluate the fixed correction rules on a separate bearing platform |
+| **Method development and analysis** | CWRU, UOTTAWA, MFPT, and DZLRSB; six frozen diagnostic backbones | Mean accuracy across the four development domains and six backbones: **65.39% → 92.82%** |
+| **Independent external validation** | Paderborn; frozen CDDG backbone with SPPC rules fixed | Class-balanced, bearing-equal window accuracy: **40.13% → 42.87%** (**+2.74 percentage points**) |
 
-The four development datasets were used during method development and should **not** be interpreted as independent tests of the final rule-selection process. The Paderborn evaluation was conducted with the SPPC rules and parameters fixed.
+The development datasets were used to establish and analyze the method. **Paderborn was reserved for validation after the SPPC rules and parameters were fixed.** The difference in improvement between these settings is an important part of the reported evaluation.
 
-## Code availability
+The study also examines fault-location errors, beneficial and harmful prediction changes, harmonic-prefix agreement, and sensitivity to the assumed bearing characteristic orders.
 
-**Code is not available in this repository at present.** This initial README is intended to document the method and evaluation scope. Planned future additions include the SPPC implementation, preprocessing and evaluation configurations, and instructions for reproducing the reported experiments. Release details will be updated here when confirmed.
+## Code and data availability
 
-The original bearing datasets are maintained by their respective providers and are not redistributed through this repository.
+The **SPPC implementation is not yet available** in this repository. The release is intended to include the physical correction module, relevant experiment configurations, and instructions for reproducing the results. This section will be updated when those materials are ready.
+
+The bearing datasets are provided by their original maintainers and are not redistributed here.
 
 ## Paper and citation
 
 **Manuscript:** *Selective Physics-Based Prediction Correction for Cross-Machine Bearing Fault Diagnosis*
 
-A paper link and BibTeX citation will be added when publication or preprint details are available.
+The paper link and BibTeX citation will be added when the manuscript is publicly available.
 
 ## License
 
-A software license will be specified when the implementation is released.
+A software license will be specified when the code is released.
+
+
+
+
