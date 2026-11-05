@@ -15,6 +15,7 @@ SPPC addresses this fault-location confusion **after** a diagnostic model has ma
 ## Framework
 
 *SPPC framework figure — to be added.*
+![SPPC framework](assets/sppc_framework.png)
 
 <!--
 To insert the final framework figure:
