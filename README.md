@@ -21,7 +21,7 @@ To insert the final framework figure:
 1. Upload the image to assets/sppc_framework.png
 2. Replace the italic placeholder above with:
 
-![Overview of the SPPC framework](../assets/sppc_framework.png)
+![SPPC framework](assets/sppc_framework.png)
 
 No other README changes are needed.
 -->
