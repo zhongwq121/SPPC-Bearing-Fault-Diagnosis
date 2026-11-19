@@ -14,13 +14,7 @@ SPPC addresses this fault-location confusion **after** a diagnostic model has ma
 
 ## 🛠️ Framework
 
-<div align="center">
-  <img src="assets/sppc_framework.png" alt="SPPC Framework" width="85%">
-  <br>
-  <em>Figure 1: Overall framework of the proposed SPPC method.</em>
-</div>
-
-<br>
+![image](https://github.com/zhongwq121/SPPC-Bearing-Fault-Diagnosis/assets/sppc_framework.png)
 
 ## 🧠 Method
 
