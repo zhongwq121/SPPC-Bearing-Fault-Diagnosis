@@ -12,6 +12,16 @@ Deep learning models for bearing fault diagnosis can struggle when deployed on m
 
 SPPC addresses this fault-location confusion **after** a diagnostic model has made its prediction. Rather than retraining the model or replacing its three-class decision, SPPC uses an independent signal-processing branch to determine whether the predicted fault location should be revised. The original prediction is retained whenever the required physical information is unavailable or the physical decisions are inconsistent.
 
+## 🛠️ Framework
+
+<div align="center">
+  <img src="assets/sppc_framework.png" alt="SPPC Framework" width="85%">
+  <br>
+  <em>Figure 1: Overall framework of the proposed SPPC method.</em>
+</div>
+
+<br>
+
 ## 🧠 Method
 
 SPPC combines three key elements:
@@ -45,42 +55,3 @@ The paper link and BibTeX citation will be added when the manuscript is publicly
 ## 📄 License
 
 The source code of this project will be open-sourced under the **MIT License** upon official release.
-
----
-<details>
-<summary><b>🇨🇳 点击查看中文版说明 (Click to view Chinese Version)</b></summary>
-
-# SPPC：基于物理证据的选择性预测修正
-
-**跨机器轴承故障诊断中基于物理证据的选择性预测修正**
-
-*一种免训练、基于后处理的方法，利用轴承特定的物理证据来修正内圈/外圈故障混淆。*
-
-> ⚠️ **发布状态**：当前仓库仅作为项目概述。源代码、预训练模型及复现指南正在整理中，将在论文录用后正式开源。
-
-## 📖 概述
-用于轴承故障诊断的深度学习模型在部署到未见过的机器上时，往往会面临性能下降。一种尤为关键的误差是：模型虽然正确识别了轴承故障，却将**内圈故障 (Inner)** 与 **外圈故障 (Outer)** 混淆。SPPC 在模型做出预测**之后**进行修正。它不重新训练模型，也不改变原有的三分类决策，而是利用独立的信号处理分支来决定是否修正预测位置。当缺乏物理信息或判断不一致时，保留原预测。
-
-## 🧠 方法
-SPPC 结合了三个关键要素：
-1. **轴承特定的物理证据**：构建包络阶次谱，并评估 BPFI/BPFO 谐波附近的候选频带。频带平均谱幅值消除了谱点数差异带来的偏置。
-2. **多谐波对比**：在固定的前缀集合 **K = {1, 2, 4, 8, 12}** 下累积物理证据。
-3. **选择性修正**：仅当物理信息条件满足且五个前缀判断完全一致时，才允许替换原始预测。**正常 (Normal)** 类别的预测绝不被改变。
-
-## 📊 实验评估
-| 评估场景 | 数据集 / 模型 | 主要结果 |
-| :--- | :--- | :--- |
-| **开发与分析** | CWRU, UOTTAWA, MFPT, DZLRSB；六种冻结骨干 | 平均准确率：**65.39% → 92.82%** |
-| **独立外部验证** | Paderborn；冻结的 CDDG 骨干模型 | 类别平衡等权准确率：**40.13% → 42.87%** |
-
-## 💻 代码与数据
-*   **代码**：尚未发布，发布内容将包含修正模块及复现指南。
-*   **数据**：原始数据集由各维护者提供，本仓库不重新分发。
-
-## 📝 引用
-论文链接及 BibTeX 将在论文公开后添加。
-
-## 📄 许可证
-正式发布时，源代码将采用 **MIT License** 开源。
-
-</details>
